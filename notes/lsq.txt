@@ -1,0 +1,38 @@
+
+list, stacks, queues = important data types 
+
+stack = the call stack
+  - every function called is put onto the stack
+
+
+abstract data types (ADT) = set of objects together with a set of operations
+  - to implement an ADT you use data structures
+
+
+list: a sequence of zero or more elements of a specified type
+  - n = the size of the list; 0 = empty list
+  - label elements A(0), A(1), ..., A(N-1)
+  - predecessor of A(0) and successor of A(N-1) are typically not defined
+  - sometimes you see something like END(L) to represent an abstract succesor to A(N-1)
+
+  - some typical operations:
+    - insert = insert a new element
+    - delete = remove an element
+    - findKth = provide access to kth element in list
+    - find = find element with specific value
+    - next = move to the next element
+    - previous = move to the previous element
+    - printList = display all of the elements
+
+  - array based lists
+    - you need an array plus a cariable storing the current size of the list
+    - when using object oriented programming (oop) the array and size would be in an object
+
+
+
+
+
+
+
+
+
