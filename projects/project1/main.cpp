@@ -5,7 +5,7 @@
 #include <sstream>
 #include <vector> 
 
-
+#include <stdio.h> 
 
 using namespace std; 
 
@@ -26,6 +26,7 @@ class foobar {
     //public member functions
     foobar&  set_position(int position);
     string   get_name(void); 
+    int      get_pos() { return pos; } 
 
     //virtual function   
     virtual int  get_strength();
@@ -125,35 +126,77 @@ foobar *pack_vector(string fb_type, string name) {
 
 
 
-void parse_file(string file_name, vector<foobar *> fb_vector) {
+void parse_file(string file_name, vector<foobar *> *fb_vector) {
 
   ifstream f (file_name); 
   string line = ""; 
-  
-  if(f.is_open()) {
 
-    while(f) {
+  if(f.is_open()) {
+    
+    while(!f.eof()) {
 
       getline(f, line);
+      if(line.compare("") == 0) { return; }
       
       stringstream s(line);
-      string word, fb_type, name; 
+      string word = "", fb_type = "", name = ""; 
    
       int count = 0;    
       while(s >> word) {
 
         count == 0 ? fb_type = word : name = word; 
+        //cout << "the word is " << fb_type << " and name is " << name << "\n";  
+        count++; 
+
+       //cout << word << "\n"; 
       }
 
-      fb_vector.push_back(pack_vector(fb_type, word)); 
+      foobar *fb = new foobar(); 
+      fb = pack_vector(fb_type, word);  
+
+      /*fb_vector->push_back(fb);*/
+      fb_vector->push_back(pack_vector(fb_type, word));
+      //cout << "successfully pushed element back" << "\n"; 
+      cout << "name is " << fb->get_name() << " type is " << fb_type << " size of vector is " << fb_vector->size()  << "\n"; 
     }
   }
 }
 
 
 
+void assign_positions(vector<foobar *> fb_vector) {
+  
+  cout << "vector size is " << fb_vector.size() << "\n";
+
+  for(size_t i = 0; i < fb_vector.size(); i++) {
+    
+    fb_vector[i]->set_position(fb_vector.size() - i); 
+    cout << "successfully set position to " << i + 1 << "\n"; 
+  }
+}
 
 
+
+void write_file(vector<foobar *> fb_vector) {
+
+  printf("%ld is the size\n", fb_vector.size()); 
+  
+  ofstream f; 
+  f.open("output.txt");
+
+   
+  for(int i = 0; i < fb_vector.size(); i++) {
+
+   cout  << fb_vector[i]->get_name() << " " << fb_vector[i]->get_strength() << " " << fb_vector[i]->get_pos() << "\n"; 
+  }
+  
+  for(size_t i = 0; i < fb_vector.size(); i++) {
+
+    f << fb_vector[i]->get_name() << " " << fb_vector[i]->get_strength() << "\n"; 
+  }
+
+  f.close(); 
+}
 
 
 
@@ -181,7 +224,16 @@ int main() {
   bar *b1 = new bar("ming", pos); 
 
   f1->set_position(3); 
-  b1->set_position(5); 
+  b1->set_position(5); foobar R2D2
+foo Carl
+foo Algorithms
+bar IAmABar
+bar xyz
+foo 123q456
+foo CooperUnion
+bar DataStructures
+foobar xyz
+foo CooperUnion
 
   cout << "name is " << f1->get_name() << "\n";  
   cout << "strenght is " << f1->get_strength() << "\n"; 
@@ -191,9 +243,9 @@ int main() {
   */
   vector<foobar *> fb_vector; 
 
-  parse_file("sample_text.txt", fb_vector); 
-  
-
+  parse_file("sample_input.txt", &fb_vector); 
+  assign_positions(fb_vector); 
+  write_file(fb_vector);  
 
   return 0; 
 }
