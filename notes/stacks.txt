@@ -1,0 +1,15 @@
+
+RAM - random access memory, 3 sections
+  - static memory = stores global variables, machine code, and static data members
+  - call stack (the stack) = run-time stack, stack frames
+  - heap = stores all dynamically allocated memory
+    - malloc, new, talloc, free
+
+- Registers, Cache, and Virtual Memory are other memory
+
+- the stack = a stack of activation records
+  - whenever a function is called:
+    - arguments = copied to parameters
+    - certain registers are backed up (program counter, registers containing pointers to activation records)
+    - many compilers back up all registers to keep things simple
+    - space is set aside for all local variables and temporary variable

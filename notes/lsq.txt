@@ -28,6 +28,24 @@ list: a sequence of zero or more elements of a specified type
     - you need an array plus a cariable storing the current size of the list
     - when using object oriented programming (oop) the array and size would be in an object
 
+  - stack
+    - push = insert on the top
+    - pop = remove from the top
+    - LIFO
+      - last in first out
+
+  - queue
+    - enqueue from the top (push) aka the rear
+    - dequeue from the bottom (pop) aka the front
+    - FIFO
+      - first in first out
+
+  -array based stack:
+    - very fast in practice
+    - doesn't allow resizing
+    - vector-based allows resizing when full which requires a linear push
+    - ex: theArray[++topOfStack] = x; 
+
 
 
 
