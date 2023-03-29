@@ -3,6 +3,7 @@
 
 #include "foobar.h"
 
+//bar class inherits from foobar class, has its own get_strength function
 class bar : public foobar {
 
   public:

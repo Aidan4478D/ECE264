@@ -11,6 +11,7 @@
 using namespace std;
 
 
+//function to create objects based off of the first word in the each line of the input file
 foobar *pack_vector(string fb_type, string name) {
 
   if(fb_type.compare("foobar") == 0) {
@@ -34,7 +35,7 @@ foobar *pack_vector(string fb_type, string name) {
 
 
 
-
+//function to parse through the input file
 void parse_file(string file_name, vector<foobar *> *fb_vector) {
 
   ifstream f (file_name); 
@@ -63,6 +64,8 @@ void parse_file(string file_name, vector<foobar *> *fb_vector) {
 }
 
 
+
+//function to assign the position to each foobar object
 void assign_positions(vector<foobar *> fb_vector) {
   
   for(size_t i = 0; i < fb_vector.size(); i++) {
@@ -72,7 +75,7 @@ void assign_positions(vector<foobar *> fb_vector) {
 }
 
 
-
+//function to write to the name and strength to the output file
 void write_file(vector<foobar *> fb_vector) {
   
   ofstream f; 
