@@ -286,21 +286,21 @@ void parse_file(string input_file, string output_file) {
         if (type == 'i') {
           
           SimpleList<int> *my_list = get_list(listSLi, name); 
-          if (check_names(listSLi, name)) { of << "ERROR: This name doesn't exist!" << "\n"; continue; }
+          if (check_names(listSLi, name)) { of << "ERROR: This name does not exist!" << "\n"; continue; }
           if (!my_list->get_list_size()) { of << "ERROR: This list is empty!" << "\n"; continue; }
           of << "Value popped: " << my_list->pop_list() << '\n';
         }
         if (type == 'd') {
         
           SimpleList<double> *my_list = get_list(listSLd, name); 
-          if (check_names(listSLd, name)) { of << "ERROR: This name doesn't exist!" << "\n"; continue; }
+          if (check_names(listSLd, name)) { of << "ERROR: This name does not exist!" << "\n"; continue; }
           if (!my_list->get_list_size()) { of << "ERROR: This list is empty!" << "\n"; continue; }
           of << "Value popped: " << my_list->pop_list() << '\n';
         }
         if (type == 's') {
         
           SimpleList<string> *my_list = get_list(listSLs, name); 
-          if (check_names(listSLs, name)) { of << "ERROR: This name doesn't exist!" << "\n"; continue; }
+          if (check_names(listSLs, name)) { of << "ERROR: This name does not exist!" << "\n"; continue; }
           if (!my_list->get_list_size()) { of << "ERROR: This list is empty!" << "\n"; continue; }
           of << "Value popped: " << my_list->pop_list() << '\n';
         }
