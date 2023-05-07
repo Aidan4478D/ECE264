@@ -115,20 +115,11 @@ auto compare_data = [](Data *p1, Data *p2) {
     
     int result = p1->lastName.compare(p2->lastName);
 
-    //last name
-    if (result) {
-        
+    if (result) //last name comparison
         return result < 0;
-    }
-
-    //first name
-    if (result = p1->firstName.compare(p2->firstName)) {
-        
+    if ((result = p1->firstName.compare(p2->firstName))) //first name comparison
         return result < 0;
-    }
-
-    //ssn 
-    return p1->ssn < p2->ssn;
+    return p1->ssn < p2->ssn; //ssn comparison
 };
 
 void sortDataList(list<Data *> &l) {
